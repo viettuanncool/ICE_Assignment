@@ -5,15 +5,18 @@ import java.util.Scanner;
 
 
 public class BJGame extends Game {
-    private BJPlayer [] _player;
     private int size;
     private int [] _score;
     private Hand [] _hand;
     
+    public BJGame(){
+        super("Black Jack");
+    }
+    
     
     public boolean bust(int turn) {
         boolean bust = true;
-        if (_player[turn].getSum() > 21) {
+        if (player[turn].getSum() > 21) {
             bust = false;
         }
         return bust;
@@ -29,7 +32,9 @@ public class BJGame extends Game {
         Scanner in = new Scanner(System.in);
         System.out.println("Please enter the amount of players");
         size = in.nextInt()+1;
-        _player = new BJPlayer[size];
+        for(int index = 0; index<size;index++){
+            super.setPlayers(players);
+        }
         _hand = new Hand[size];
         for(int turn = 0; turn<size; turn++){
             _player[turn]= new BJPlayer();
@@ -67,10 +72,6 @@ public class BJGame extends Game {
             }
     }
     
-    public static void main(String[] args){
-        BJGame game = new BJGame();
-        game.play();
-        game.declareWinner();
-    }
+    
     
 }

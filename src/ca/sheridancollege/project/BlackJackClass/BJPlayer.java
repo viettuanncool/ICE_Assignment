@@ -1,21 +1,36 @@
-package ca.sheridancollege.project.BlackJackClass;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-public class BJPlayer extends Player {
-    
-    private int cardSum;
-    
-    public void getCard() {
-        // TODO - implement BJPlayer.getCard
-        throw new UnsupportedOperationException();
+/**
+ *
+ * @author jbias
+ */
+public class BJPlayer extends Player{
+    int sum;
+    BJPlayer(String name){
+        id=name;
+	CardHand ch = new CardHand();
+                
+        //create 52 Cards
+        ch.generateHand();
+                
+                
+        for(Card c: ch.cards)
+        {
+            System.out.println(c.getValue() + " of " + c.getColour());
+        }
     }
-    
-    public int getSum() {
-       
+    @Override public void play (){
+        
     }
-    
-    @Override
-    public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getSum(){
+        return sum;
     }
-    
+    public void getCard(){
+        int value=0;
+        sum+=value;
+    }
 }

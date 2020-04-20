@@ -8,7 +8,6 @@ public class Hand {
     
     public Hand() {
         // TODO - implement Hand.Hand
-        throw new UnsupportedOperationException();
     }
     
     public int addCard(BJCard card){
