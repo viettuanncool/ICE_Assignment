@@ -1,6 +1,4 @@
-
-import ca.sheridancollege.project.BlackJackClass.Card;
-import ca.sheridancollege.project.BlackJackClass.Hand;
+package ca.sheridancollege.project.BlackJackClass;
 
 /*
 * To change this license header, choose License Headers in Project Properties.
@@ -14,6 +12,7 @@ import ca.sheridancollege.project.BlackJackClass.Hand;
  */
 public class BJPlayer extends Player{
     int sum;
+    private final String id;
     BJPlayer(String name){
         id=name;
         Hand ch = new Hand();
