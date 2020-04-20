@@ -3,7 +3,7 @@
  * Students can modify and extend to implement their game.
  * Add your name as a modifier and the date!
  */
-package ca.sheridancollege.project;
+package ca.sheridancollege.project.BlackJackClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +14,7 @@ import java.util.Collections;
  * The group of cards has a maximum size attribute which is flexible for reuse.
  * @author dancye
  */
-public class GroupOfCards 
+public class GroupOfCards extends Deck 
 {
    
     //The group of cards, stored in an ArrayList
@@ -30,7 +30,7 @@ public class GroupOfCards
      * A method that will get the group of cards as an ArrayList
      * @return the group of cards.
      */
-    public ArrayList<Card> showCards()
+    public java.util.ArrayList<Card> showCards()
     {
         return cards;
     }
