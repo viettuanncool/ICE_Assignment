@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 
 public class BJGame extends Game {
+    private BJPlayer [] _player;
     private int size;
     private int [] _score;
     private Hand [] _hand;
@@ -16,7 +17,7 @@ public class BJGame extends Game {
     
     public boolean bust(int turn) {
         boolean bust = true;
-        if (player[turn].getSum() > 21) {
+        if (_player[turn].getSum() > 21) {
             bust = false;
         }
         return bust;
@@ -32,17 +33,18 @@ public class BJGame extends Game {
         Scanner in = new Scanner(System.in);
         System.out.println("Please enter the amount of players");
         size = in.nextInt()+1;
-        for(int index = 0; index<size;index++){
-            super.setPlayers(players);
-        }
+        _player = new BJPlayer[size];
         _hand = new Hand[size];
         for(int turn = 0; turn<size; turn++){
             _player[turn]= new BJPlayer();
             _hand[turn]= new Hand();
             boolean deal = false;
-            while ((_player[turn].getSum()<21) && deal){
-                deal();
-            }
+            do {
+                System.out.println("Stand or Deal");
+                String choice = in.nextLine();
+                if(choice.equals("deal"))
+                    deal();   
+            }while ((_player[turn].getSum()<21) && deal);
         }
         declareWinner();
     }
