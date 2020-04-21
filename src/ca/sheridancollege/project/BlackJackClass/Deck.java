@@ -24,7 +24,8 @@ public class Deck extends GroupOfCards{
         for(BJCard.Suit suit : BJCard.Suit.values()){
             for(BJCard.Value value: BJCard.Value.values()){
                 System.out.println(value + " " + suit);
-                Deck.getInstance().add(new BJCard(suit, value));
+                deck.add(new BJCard(suit, value));
+                
             }
         }
     }

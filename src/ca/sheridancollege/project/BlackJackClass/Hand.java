@@ -12,7 +12,7 @@ public class Hand extends GroupOfCards{
     
     public Hand (int s){
         super(s);
-        deck = Deck.getInstance();
+        deck = Deck.getInstance();      
     } 
     
     public int getCard(){

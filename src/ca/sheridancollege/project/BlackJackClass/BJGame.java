@@ -31,13 +31,13 @@ public class BJGame extends Game {
                 in.next();
             }
         
-        
         deck = Deck.getInstance();
         for(int turn = 0; turn<size-1; turn++){
             System.out.println("Player "+turn+", enter your name. ");
-            String name = in.nextLine();
+            String name = in.next();
             _player[turn]= new BJPlayer(name);
         }
+        _player[size-1]= new BJPlayer("Dealer");
         
         int round =1;
         boolean stop=false;
@@ -45,13 +45,10 @@ public class BJGame extends Game {
             System.out.println("-----Round "+round+"-----");
             for(int turn = 0; turn<size; turn++){
                 String name = _player[turn].getPlayerID();
-                if(turn == size-1){
-                    name="Dealer";
-                }
                 System.out.println(name+"'s turn");
                 _player[turn].play();
             }
-            
+       
             declareWinner();
             
             for(int index=0;index<size;index++){
@@ -84,7 +81,7 @@ public class BJGame extends Game {
             System.out.println("Dealer Wins");
             _score[_player.length - 1]++;
         } else
-            for(int c=0; c<winner.size();c++) {
+            for(int c=0; c<winner.size()-1;c++) {
                 System.out.println(_player[c].getPlayerID()+ " wins");
                 _score[(int) winner.get(c)]++;
             }

@@ -9,12 +9,12 @@ import java.util.Scanner;
 public class BJPlayer extends Player{
     private int sum;
     private int numOfAces;
-    private Hand ch;
+    private Hand hand;
     private final int handSize =7;
     
     public BJPlayer(String name){
         super(name);
-        ch = new Hand(7);
+        hand = new Hand(7);
     }
     
     public int getSum(){
@@ -22,7 +22,7 @@ public class BJPlayer extends Player{
     }
     
     public void getCard(){
-        int value = ch.getCard();
+        int value = hand.getCard();
         if(value==11)
             numOfAces++;
         sum+=value;
@@ -42,12 +42,13 @@ public class BJPlayer extends Player{
     public void play() {
         Scanner in = new Scanner(System.in);
         boolean deal = false;
-        while (!bust() && deal){
+        System.out.println("Running "+bust());
+        do{
             System.out.println("Stand or Deal");
             String choice = in.nextLine();
             if(choice.equals("deal")){
-                //TODO deal logic
-            }
-        }
+                getCard();
+            } 
+        }while ((!bust()) && deal);
     }
 }
