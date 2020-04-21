@@ -1,5 +1,6 @@
 package ca.sheridancollege.project.BlackJackClass;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,6 +23,9 @@ public class BJGame extends Game {
             try{
                 System.out.println("Please enter the amount of players(Atleast 2)");
                 size = in.nextInt();
+                if(size<2){
+                    throw new IOException();
+                }
                 System.out.println("Enter the score you want to finish on");
                 _endScore = in.nextInt();
                 _player = new BJPlayer[size];

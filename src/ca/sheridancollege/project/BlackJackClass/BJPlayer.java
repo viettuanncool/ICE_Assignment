@@ -53,14 +53,14 @@ public class BJPlayer extends Player{
         while ((!bust()) && deal){
             System.out.println(sum);
             System.out.println("Stand(0) or Deal(1)");
-            int choice = in.nextInt();
-            if(choice==1){
+            String choice = in.nextLine();
+            if(choice.equals("1")){
                 getCard();
                 hand.printHand();
                 deal = true;
                 
             }
-            else if(choice==0){
+            else if(choice.equals("0")){
                 deal=false;
             }
         }
