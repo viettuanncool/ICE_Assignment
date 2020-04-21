@@ -21,7 +21,7 @@ public class Hand extends GroupOfCards{
     public int getCard(){
         hand.add(deck.get(deck.size()-1));
         deck.remove(deck.size()-1);
-        return deck.get((deck.size()-1)).getIntValue();
+        return hand.get((hand.size()-1)).getIntValue();
     }
     
     public void printHand(){
