@@ -21,7 +21,7 @@ public class BJGame extends Game {
     public void play() {
         Scanner in = new Scanner(System.in);
             try{
-                System.out.println("Please enter the amount of players(Atleast 2)");
+                System.out.println("Please enter the amount of players(At least 2)");
                 size = in.nextInt();
                 if(size<2){
                     throw new IOException();
