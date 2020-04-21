@@ -1,28 +1,19 @@
 package ca.sheridancollege.project.BlackJackClass;
 
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
-
-/**
- *
- * @author jbias
- */
-public class BJPlayer extends Player{
+public class BJPlayer extends Player {
+    
     int sum;
-    private final String id;
     BJPlayer(String name){
-        id=name;
+        super.setPlayerID(name);
         Hand ch = new Hand();
         
         //create 52 Cards
         ch.generateHand();
         
-        for(Card c: ch.cards)
+        
+        for(BJCard c: ch.cards)
         {
-            System.out.println(c.getValue() + " of " + c.getSuit());
+            System.out.println(c.getValue() + " of " + c.getValue());
         }
     }
     @Override public void play (){
@@ -35,4 +26,5 @@ public class BJPlayer extends Player{
         int value=0;
         sum+=value;
     }
+    
 }

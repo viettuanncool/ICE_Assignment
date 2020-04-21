@@ -1,6 +1,6 @@
 package ca.sheridancollege.project.BlackJackClass;
 
-public class Deck {
+public class Deck extends GroupOfCards {
 
 	public Deck() {
 		// TODO - implement Deck.Deck

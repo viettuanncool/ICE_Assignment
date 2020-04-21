@@ -14,7 +14,7 @@ import java.util.Collections;
  * The group of cards has a maximum size attribute which is flexible for reuse.
  * @author dancye
  */
-public class GroupOfCards extends Deck 
+public class GroupOfCards
 {
    
     //The group of cards, stored in an ArrayList

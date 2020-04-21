@@ -15,31 +15,35 @@ public class BJGame extends Game {
         super("Black Jack");
     }
     
-    public boolean bust(int turn) {
+    public boolean bust(int value) {
         boolean bust = true;
-        if (_player[turn].getSum() > 21) {
+        if (value > 21) {
             bust = false;
         }
         return bust;
     }
     
-    public void deal() {
-        // TODO - implement BJGame.deal
-        throw new UnsupportedOperationException();
+    public void deal(int turn) {
+        _hand[turn].addCard();
     }
     
     @Override
     public void play() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Please enter the amount of players");
-        size = in.nextInt()+1;
-        System.out.println("Enter the score you want to finish on");
-        _endScore = in.nextInt();
-        _player = new BJPlayer[size];
-        _hand = new Hand[size];
-        _score = new int [size];
-        
-        for(int turn = 0; turn<size; turn++){
+        try{
+            System.out.println("Please enter the amount of players");
+            size = in.nextInt()+1;
+            System.out.println("Enter the score you want to finish on");
+            _endScore = in.nextInt();
+            _player = new BJPlayer[size];
+            _hand = new Hand[size];
+            _score = new int [size];
+            
+        }catch(Exception e){
+            System.out.println("Wrong type of input! Game terminated.");
+            System.exit(0);
+        }
+        for(int turn = 0; turn<size-1; turn++){
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.nextLine();
             _player[turn]= new BJPlayer(name);
@@ -51,19 +55,23 @@ public class BJGame extends Game {
         while(!stop){
             System.out.println("-----Round "+round+"-----");
             for(int turn = 0; turn<size; turn++){
-                System.out.println(""+"'s turn");
+                String name = _player[turn].getPlayerID();
+                if(turn == size-1){
+                    name="Dealer";
+                }
+                System.out.println(name+"'s turn");
                 boolean deal = false;
                 do {
                     System.out.println("Stand or Deal");
                     String choice = in.nextLine();
                     if(choice.equals("deal"))
                         deal();
-                }while ((_player[turn].getSum()<21) && deal);
+                }while (!bust(_player[turn].getSum()) && deal);
             }
             declareWinner();
             for(int index=0;index<size;index++){
                 if(_score[index]==_endScore){
-                    System.out.println(""+" Wins the game");
+                    System.out.println(_player[index].getPlayerID()+" Wins the game");
                     stop=true;
                 }
             }
@@ -72,26 +80,26 @@ public class BJGame extends Game {
     
     @Override
     public void declareWinner() {
-         int max = 0;
+        int max = 0;
         ArrayList winner = new ArrayList();
         winner.add(0);
         for (int turn = 0; turn < size; turn++) {
-            if ((max < _player[turn].getSum()) && (_player[turn].getSum()<=21) ) {
+            if ((max < _player[turn].getSum()) && (bust(_player[turn].getSum())) ) {
                 max = (int) _player[turn].getSum();
                 winner = new ArrayList();
                 winner.add(turn);
             }
-            else if(max == (int) _player[turn].getSum() && ((int) _player[turn].getSum() <= 21)) {
+            else if(max == (int) _player[turn].getSum() && bust(_player[turn].getSum())) {
                 winner.add(turn);
             }
-        }    
+        }
         
         if ((int) winner.get(0) == _player.length - 1) {
             System.out.println("Dealer Wins");
             _score[_player.length - 1]++;
         } else
             for(int c=0; c<winner.size();c++) {
-                System.out.println("Player " + ((int) winner.get(c) + 1) + " wins");
+                System.out.println(_player[c].getPlayerID()+ " wins");
                 _score[(int) winner.get(c)]++;
             }
     }
