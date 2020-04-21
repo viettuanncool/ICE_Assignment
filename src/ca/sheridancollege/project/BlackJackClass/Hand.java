@@ -16,7 +16,7 @@ public class Hand extends GroupOfCards{
     } 
     
     public int getCard(){
-        hand.add(deck.showCards().get(0));
+        //hand.add(deck.showCards().get(0));
         return hand.get(super.getSize()-1).getIntValue();
     }
 }
