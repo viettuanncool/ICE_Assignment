@@ -7,12 +7,15 @@ import java.util.ArrayList;
  * @author jbias
  */
 public class Hand extends GroupOfCards{
-    ArrayList<BJCard> hand;
+    private ArrayList<BJCard> hand;
+    private Deck deckClass;
     private ArrayList<BJCard> deck;
+    
     
     public Hand (int s){
         super(s);
-        deck = Deck.getInstance();      
+        deckClass = Deck.getInstance();
+        deck = deckClass.getDeck();
     } 
     
     public int getCard(){

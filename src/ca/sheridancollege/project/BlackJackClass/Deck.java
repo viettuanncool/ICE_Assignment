@@ -2,32 +2,33 @@ package ca.sheridancollege.project.BlackJackClass;
 
 import java.util.ArrayList;
 
+import java.util.Collections;
+
 public class Deck extends GroupOfCards{
     
-    private static ArrayList<BJCard> deck = null;
+    private static Deck deckClass = new Deck(52);
+    private ArrayList<BJCard> deck = new ArrayList<BJCard>();
     
     private Deck(int givenSize) {
         super(givenSize);
         addCards();
-        super.shuffle();
+        Collections.shuffle(deck);
     }
     
-    public static ArrayList<BJCard> getInstance(){
-        if((deck == null)){
-        } else {
-            deck = new ArrayList<BJCard>(52);
-        }
-        return deck;
+    public static Deck getInstance(){
+        return deckClass;
     }
     
     private void addCards(){
         for(BJCard.Suit suit : BJCard.Suit.values()){
             for(BJCard.Value value: BJCard.Value.values()){
-                System.out.println(value + " " + suit);
-                deck.add(new BJCard(suit, value));
-                
+                deck.add(new BJCard(suit, value));         
             }
         }
+    }
+    
+    public ArrayList<BJCard> getDeck(){
+        return deck;
     }
     
     
