@@ -12,7 +12,7 @@ public class BJPlayer extends Player{
     private Hand ch;
     public BJPlayer(String name){
         super(name);
-	ch = new Hand(5);
+        ch = new Hand(5);
     }
     
     public int getSum(){
@@ -25,6 +25,7 @@ public class BJPlayer extends Player{
             numOfAces++;
         sum+=value;
     }
+    
     public boolean bust(){
         if(numOfAces>=1){
             sum-=10;
@@ -34,17 +35,17 @@ public class BJPlayer extends Player{
         else
             return true;
     }
-
+    
     @Override
     public void play() {
         Scanner in = new Scanner(System.in);
-        BJGame game = new BJGame();
         boolean deal = false;
-                do {
-                    System.out.println("Stand or Deal");
-                    String choice = in.nextLine();
-                    if(choice.equals("deal"))
-                        game.deal();
-                }while (!game.bust(sum) && deal);
+        while (!bust() && deal){
+            System.out.println("Stand or Deal");
+            String choice = in.nextLine();
+            if(choice.equals("deal")){
+                //TODO deal logic
+            }
+        }
     }
 }

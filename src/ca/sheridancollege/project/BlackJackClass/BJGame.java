@@ -10,21 +10,11 @@ public class BJGame extends Game {
     private int [] _score;
     private Hand [] _hand;
     private int _endScore;
+    private final int handSize = 7;
+    private final int deckSize = 52;
     
     public BJGame(){
         super("Black Jack");
-    }
-    
-    public boolean bust(int value) {
-        boolean bust = true;
-        if (value > 21) {
-            bust = false;
-        }
-        return bust;
-    }
-    
-    public void deal() {
-        
     }
     
     @Override
@@ -43,11 +33,13 @@ public class BJGame extends Game {
             System.out.println("Wrong type of input! Game terminated.");
             System.exit(0);
         }
+        
+        Deck deck = new Deck(deckSize);
         for(int turn = 0; turn<size-1; turn++){
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.nextLine();
             _player[turn]= new BJPlayer(name);
-            _hand[turn]= new Hand(5);
+            _hand[turn]= new Hand(handSize);
         }
         
         int round =1;
@@ -60,15 +52,18 @@ public class BJGame extends Game {
                     name="Dealer";
                 }
                 System.out.println(name+"'s turn");
-                
+                _player[turn].play();
             }
+            
             declareWinner();
+            
             for(int index=0;index<size;index++){
                 if(_score[index]==_endScore){
                     System.out.println(_player[index].getPlayerID()+" Wins the game");
                     stop=true;
                 }
             }
+            round++;
         }
     }
     
@@ -78,12 +73,12 @@ public class BJGame extends Game {
         ArrayList winner = new ArrayList();
         winner.add(0);
         for (int turn = 0; turn < size; turn++) {
-            if ((max < _player[turn].getSum()) && (bust(_player[turn].getSum())) ) {
+            if ((max < _player[turn].getSum()) && _player[turn].bust()) {
                 max = (int) _player[turn].getSum();
                 winner = new ArrayList();
                 winner.add(turn);
             }
-            else if(max == (int) _player[turn].getSum() && bust(_player[turn].getSum())) {
+            else if(max == (int) _player[turn].getSum() && _player[turn].bust()) {
                 winner.add(turn);
             }
         }
