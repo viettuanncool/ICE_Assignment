@@ -15,6 +15,9 @@ public class BJPlayer extends Player{
     public BJPlayer(String name){
         super(name);
         hand = new Hand(7);
+        for(int cards=0;cards<2;cards++){
+            getCard();
+        }
     }
     
     public int getSum(){
@@ -29,26 +32,34 @@ public class BJPlayer extends Player{
     }
     
     public boolean bust(){
-        if(numOfAces>=1){
-            sum-=10;
-            numOfAces--;
-            return false;
+        if(sum>21){
+            if(numOfAces>=1){
+                sum-=10;
+                numOfAces--;
+                return false;
+            }
+            return true;
         }
         else
-            return true;
+            return false;
     }
     
+
     @Override
     public void play() {
         Scanner in = new Scanner(System.in);
         boolean deal = false;
         System.out.println("Running "+bust());
         do{
+            hand.printHand();
+            System.out.println(sum);
             System.out.println("Stand or Deal");
             String choice = in.nextLine();
-            if(choice.equals("deal")){
+            if(choice.equalsIgnoreCase("deal")){
                 getCard();
-            } 
+                deal = true;
+            }
+            System.out.println(sum);
         }while ((!bust()) && deal);
     }
 }

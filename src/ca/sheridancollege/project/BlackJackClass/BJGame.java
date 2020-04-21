@@ -27,8 +27,8 @@ public class BJGame extends Game {
                 _player = new BJPlayer[size];
                 _score = new int [size];
             }catch(Exception e){
-                System.out.println("Wrong type of input! Try again");
-                in.next();
+                System.out.println("Wrong type of input! Game terminated");
+                System.exit(0);
             }
  
         for(int turn = 0; turn<size-1; turn++){
