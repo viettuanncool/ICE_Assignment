@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Hand extends GroupOfCards{
     ArrayList<BJCard> hand;
-    private Deck deck;
+    private ArrayList<BJCard> deck;
     
     public Hand (int s){
         super(s);
@@ -16,7 +16,7 @@ public class Hand extends GroupOfCards{
     } 
     
     public int getCard(){
-        //hand.add(deck.showCards().get(0));
+        hand.add(deck.get(super.getSize()-1));
         return hand.get(super.getSize()-1).getIntValue();
     }
 }

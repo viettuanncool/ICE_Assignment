@@ -10,7 +10,7 @@ public class BJGame extends Game {
     private int [] _score;
     private int _endScore;
     private final int deckSize = 52;
-    Deck deck;
+    ArrayList<BJCard> deck;
     
     public BJGame(){
         super("Black Jack");
@@ -19,7 +19,6 @@ public class BJGame extends Game {
     @Override
     public void play() {
         Scanner in = new Scanner(System.in);
-        while (true){
             try{
                 System.out.println("Please enter the amount of players");
                 size = in.nextInt()+1;
@@ -27,14 +26,13 @@ public class BJGame extends Game {
                 _endScore = in.nextInt();
                 _player = new BJPlayer[size];
                 _score = new int [size];
-                break;
             }catch(Exception e){
                 System.out.println("Wrong type of input! Try again");
                 in.next();
             }
-        }
         
-        Deck deck = Deck.getInstance();
+        
+        deck = Deck.getInstance();
         for(int turn = 0; turn<size-1; turn++){
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.nextLine();
