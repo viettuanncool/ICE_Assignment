@@ -8,13 +8,15 @@ import java.util.ArrayList;
  */
 public class Hand extends GroupOfCards{
     ArrayList<BJCard> hand;
+    private Deck deck;
     
     public Hand (int s){
         super(s);
+        deck = new Deck(super.getSize());
     } 
     
-   // public int getCard(){
-   //     hand.add(Deck.getCard());
-    //    return hand.get(super.getSize()-1).getValue();
-   // }
+    public int getCard(){
+        hand.add(deck.getCard());
+        return hand.get(super.getSize()-1).getIntValue();
+    }
 }
