@@ -34,7 +34,7 @@ public class BJGame extends Game {
             }
         }
         
-        deck = new Deck(deckSize);
+        deck.getInstance();
         for(int turn = 0; turn<size-1; turn++){
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.nextLine();
