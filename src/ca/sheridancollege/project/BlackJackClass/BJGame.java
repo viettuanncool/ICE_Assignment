@@ -19,17 +19,19 @@ public class BJGame extends Game {
     @Override
     public void play() {
         Scanner in = new Scanner(System.in);
-        try{
-            System.out.println("Please enter the amount of players");
-            size = in.nextInt()+1;
-            System.out.println("Enter the score you want to finish on");
-            _endScore = in.nextInt();
-            _player = new BJPlayer[size];
-            _score = new int [size];
-            
-        }catch(Exception e){
-            System.out.println("Wrong type of input! Game terminated.");
-            System.exit(0);
+        while (true){
+            try{
+                System.out.println("Please enter the amount of players");
+                size = in.nextInt()+1;
+                System.out.println("Enter the score you want to finish on");
+                _endScore = in.nextInt();
+                _player = new BJPlayer[size];
+                _score = new int [size];
+                break;
+            }catch(Exception e){
+                System.out.println("Wrong type of input! Try again");
+                in.next();
+            }
         }
         
         deck = new Deck(deckSize);

@@ -10,9 +10,10 @@ public class Deck extends GroupOfCards{
     
     private void addCards(){
         int index = 0;
-        for(BJCard.Suit suit: BJCard.Suit.values()){
+        for(BJCard.Suit suit : BJCard.Suit.values()){
             for(BJCard.Value value: BJCard.Value.values()){
-                showCards().add(index, new BJCard(suit,value));
+                System.out.println(value + " " + suit);
+                showCards().add(new BJCard(suit,value));
                 index++;
             }
         }

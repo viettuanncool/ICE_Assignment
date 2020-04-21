@@ -13,8 +13,8 @@ public class Hand extends GroupOfCards{
         super(s);
     } 
     
-    public int getCard(){
-        hand.add(Deck.getCard());
-        return hand.get(super.getSize()-1).getValue();
-    }
+   // public int getCard(){
+   //     hand.add(Deck.getCard());
+    //    return hand.get(super.getSize()-1).getValue();
+   // }
 }
