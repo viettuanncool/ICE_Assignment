@@ -8,10 +8,9 @@ public class BJGame extends Game {
     private BJPlayer [] _player;
     private int size;
     private int [] _score;
-    private Hand [] _hand;
     private int _endScore;
-    private final int handSize = 7;
     private final int deckSize = 52;
+    Deck deck;
     
     public BJGame(){
         super("Black Jack");
@@ -26,7 +25,6 @@ public class BJGame extends Game {
             System.out.println("Enter the score you want to finish on");
             _endScore = in.nextInt();
             _player = new BJPlayer[size];
-            _hand = new Hand[size];
             _score = new int [size];
             
         }catch(Exception e){
@@ -34,12 +32,11 @@ public class BJGame extends Game {
             System.exit(0);
         }
         
-        Deck deck = new Deck(deckSize);
+        deck = new Deck(deckSize);
         for(int turn = 0; turn<size-1; turn++){
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.nextLine();
             _player[turn]= new BJPlayer(name);
-            _hand[turn]= new Hand(handSize);
         }
         
         int round =1;

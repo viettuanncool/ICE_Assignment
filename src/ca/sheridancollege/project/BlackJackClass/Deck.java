@@ -2,13 +2,10 @@ package ca.sheridancollege.project.BlackJackClass;
 
 public class Deck extends GroupOfCards{
     
-    private int order;
-    
     public Deck(int givenSize) {
         super(givenSize);
         addCards();
         super.shuffle();
-        order=0;
     }
     
     private void addCards(){
@@ -21,9 +18,7 @@ public class Deck extends GroupOfCards{
         }
     }
     
-    public Card getCard(){
-        return showCards().get(order);
-    }
+    
     
     
 }

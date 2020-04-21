@@ -11,10 +11,10 @@ public class Hand extends GroupOfCards{
     
     public Hand (int s){
         super(s);
-    }
+    } 
     
-    public void getCard(){
+    public int getCard(){
         hand.add(Deck.getCard());
-        System.out.println(hand.get(super.getSize()-1).getValue());
+        return hand.get(super.getSize()-1).getValue();
     }
 }

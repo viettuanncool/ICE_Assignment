@@ -10,9 +10,11 @@ public class BJPlayer extends Player{
     private int sum;
     private int numOfAces;
     private Hand ch;
+    private final int handSize =7;
+    
     public BJPlayer(String name){
         super(name);
-        ch = new Hand(5);
+        ch = new Hand(7);
     }
     
     public int getSum(){
