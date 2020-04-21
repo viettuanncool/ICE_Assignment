@@ -2,10 +2,16 @@ package ca.sheridancollege.project.BlackJackClass;
 
 public class Deck extends GroupOfCards{
     
-    public Deck(int givenSize) {
+    private static Deck deck = new Deck(52);
+    
+    private Deck(int givenSize) {
         super(givenSize);
         addCards();
         super.shuffle();
+    }
+    
+    public static Deck getInstance(){
+        return deck;
     }
     
     private void addCards(){
@@ -17,10 +23,6 @@ public class Deck extends GroupOfCards{
                 index++;
             }
         }
-    }
-    
- 
-        
     }
     
     
