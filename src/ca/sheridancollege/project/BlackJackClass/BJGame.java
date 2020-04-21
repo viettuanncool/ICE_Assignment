@@ -51,6 +51,7 @@ public class BJGame extends Game {
             System.out.println("Round Ended");
             declareWinner();
             
+            
             for(int index=0;index<size;index++){
                 if(_score[index]==_endScore){
                     System.out.println("Game Ended");

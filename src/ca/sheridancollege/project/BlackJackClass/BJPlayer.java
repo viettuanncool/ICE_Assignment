@@ -14,10 +14,6 @@ public class BJPlayer extends Player{
     
     public BJPlayer(String name){
         super(name);
-        hand = new Hand(7);
-        for(int cards=0;cards<2;cards++){
-            getCard();
-        }
     }
     
     public int getSum(){
@@ -44,9 +40,13 @@ public class BJPlayer extends Player{
             return false;
     }
     
-
+    
     @Override
     public void play() {
+        hand = new Hand(7);
+            for(int cards=0;cards<2;cards++){
+                getCard();
+            }
         Scanner in = new Scanner(System.in);
         boolean deal = false;
         hand.printHand();
