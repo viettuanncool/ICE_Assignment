@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class BJPlayer extends Player{
     private int sum;
-    private int numOfAces;
+    private int numOfAces=0;
     private Hand hand;
     
     public BJPlayer(String name){
@@ -51,13 +51,17 @@ public class BJPlayer extends Player{
         boolean deal = true;
         hand.printHand();
         while ((!bust()) && deal){
-            deal = false;
-            System.out.println("Stand or Deal");
-            String choice = in.nextLine();
-            if(choice.equalsIgnoreCase("deal")){
+            System.out.println(sum);
+            System.out.println("Stand(0) or Deal(1)");
+            int choice = in.nextInt();
+            if(choice==1){
                 getCard();
                 hand.printHand();
                 deal = true;
+                
+            }
+            else if(choice==0){
+                deal=false;
             }
         }
     }

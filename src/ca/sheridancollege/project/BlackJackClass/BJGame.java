@@ -54,7 +54,6 @@ public class BJGame extends Game {
             for(int index=0;index<size;index++){
                 if(_score[index]==_endScore){
                     System.out.println("Game Ended");
-                    System.out.println(_player[index].getPlayerID()+" Wins the game");
                     stop=true;
                 }
             }
@@ -82,7 +81,7 @@ public class BJGame extends Game {
         }
         else{
             for(int c=0; c<winner.size();c++) {
-                System.out.println(_player[c].getPlayerID()+ " wins");
+                System.out.println(_player[(int) winner.get(c)].getPlayerID()+ " wins");
                 _score[(int) winner.get(c)]++;
             }
         }
