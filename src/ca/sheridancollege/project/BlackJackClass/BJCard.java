@@ -2,23 +2,45 @@ package ca.sheridancollege.project.BlackJackClass;
 
 public class BJCard extends Card {
 
-	private String suit;
-	private int value;
+    enum Suit{
+        HEARTS, 
+        DIAMONDS,
+        CLUBS,
+        SPADES
+    }
+    
+    enum Value{
+        ACE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING
+    }
+	private final Suit suit;
+        private final Value value;
 
 	/**
 	 * 
 	 * @param String
 	 */
-	public BJCard(String suit,int value ) {
-            this.suit = suit;	
-            this.value = value;
+	public BJCard(Suit suit, Value value ) {
+              this.suit = suit;
+              this.value = value;
         }
 
-	public String getSuit() {
+	public Suit getSuit() {
 		return this.suit;
 	}
 
-	public int getValue() {
+	public Value getValue() {
 		return this.value;
 	}
 
@@ -26,4 +48,5 @@ public class BJCard extends Card {
     public String toString() {
         return this.value + " of " + this.suit;
     }
+
 }
