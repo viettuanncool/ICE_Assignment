@@ -1,9 +1,7 @@
 package ca.sheridancollege.project.BlackJackClass;
 
 public class Deck extends GroupOfCards{
-    
 
-            
     public Deck(int givenSize) {
         super(givenSize);
         addCards();

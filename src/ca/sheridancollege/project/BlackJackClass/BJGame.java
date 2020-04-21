@@ -23,8 +23,8 @@ public class BJGame extends Game {
         return bust;
     }
     
-    public void deal(int turn) {
-        _hand[turn].addCard();
+    public void deal() {
+        
     }
     
     @Override
@@ -47,7 +47,7 @@ public class BJGame extends Game {
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.nextLine();
             _player[turn]= new BJPlayer(name);
-            _hand[turn]= new Hand();
+            _hand[turn]= new Hand(5);
         }
         
         int round =1;
@@ -60,13 +60,7 @@ public class BJGame extends Game {
                     name="Dealer";
                 }
                 System.out.println(name+"'s turn");
-                boolean deal = false;
-                do {
-                    System.out.println("Stand or Deal");
-                    String choice = in.nextLine();
-                    if(choice.equals("deal"))
-                        deal();
-                }while (!bust(_player[turn].getSum()) && deal);
+                
             }
             declareWinner();
             for(int index=0;index<size;index++){
