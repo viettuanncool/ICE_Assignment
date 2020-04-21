@@ -29,12 +29,6 @@ public class Deck extends GroupOfCards{
                 deck.add(new BJCard(suit, value));
             }
         }
-    }
-    
-    public ArrayList<BJCard> getDeck(){
-        shuffleDeck();
-        return deck;
-    }
-    
+    }  
     
 }
