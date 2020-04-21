@@ -20,8 +20,8 @@ public class BJGame extends Game {
     public void play() {
         Scanner in = new Scanner(System.in);
             try{
-                System.out.println("Please enter the amount of players");
-                size = in.nextInt()+1;
+                System.out.println("Please enter the amount of players(Atleast 2)");
+                size = in.nextInt();
                 System.out.println("Enter the score you want to finish on");
                 _endScore = in.nextInt();
                 _player = new BJPlayer[size];
@@ -31,12 +31,11 @@ public class BJGame extends Game {
                 System.exit(0);
             }
  
-        for(int turn = 0; turn<size-1; turn++){
+        for(int turn = 0; turn<size; turn++){
             System.out.println("Player "+turn+", enter your name. ");
             String name = in.next();
             _player[turn]= new BJPlayer(name);
         }
-        _player[size-1]= new BJPlayer("Dealer");
         
         int round =1;
         boolean stop=false;
@@ -67,23 +66,18 @@ public class BJGame extends Game {
     public void declareWinner() {
         int max = 0;
         ArrayList winner = new ArrayList();
-        winner.add(0);
         for (int turn = 0; turn < size; turn++) {
-            if ((max < _player[turn].getSum()) && _player[turn].bust()) {
+            if ((max < _player[turn].getSum()) && (!_player[turn].bust())) {
                 max = (int) _player[turn].getSum();
                 winner = new ArrayList();
                 winner.add(turn);
             }
-            else if(max == (int) _player[turn].getSum() && _player[turn].bust()) {
+            else if(max == (int) _player[turn].getSum() && (!_player[turn].bust())) {
                 winner.add(turn);
             }
         }
         
-        if ((int) winner.get(0) == _player.length - 1) {
-            System.out.println("Dealer Wins");
-            _score[_player.length - 1]++;
-        } 
-        else if(winner.size()==0){
+        if(winner.size()==0 || winner.size()==size){
             System.out.println("Draw Game");
         }
         else{

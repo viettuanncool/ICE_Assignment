@@ -44,14 +44,15 @@ public class BJPlayer extends Player{
     @Override
     public void play() {
         hand = new Hand(7);
-            for(int cards=0;cards<2;cards++){
-                getCard();
-            }
+        sum=0;
+        for(int cards=0;cards<2;cards++){
+            getCard();
+        }
         Scanner in = new Scanner(System.in);
-        boolean deal = false;
+        boolean deal = true;
         hand.printHand();
-        do{
-            
+        while ((!bust()) && deal){
+            deal = false;
             System.out.println("Stand or Deal");
             String choice = in.nextLine();
             if(choice.equalsIgnoreCase("deal")){
@@ -59,7 +60,6 @@ public class BJPlayer extends Player{
                 hand.printHand();
                 deal = true;
             }
-            
-        }while ((!bust()) && deal);
+        }
     }
 }
