@@ -49,17 +49,17 @@ public class BJPlayer extends Player{
     public void play() {
         Scanner in = new Scanner(System.in);
         boolean deal = false;
-        System.out.println("Running "+bust());
+        hand.printHand();
         do{
-            hand.printHand();
-            System.out.println(sum);
+            
             System.out.println("Stand or Deal");
             String choice = in.nextLine();
             if(choice.equalsIgnoreCase("deal")){
                 getCard();
+                hand.printHand();
                 deal = true;
             }
-            System.out.println(sum);
+            
         }while ((!bust()) && deal);
     }
 }

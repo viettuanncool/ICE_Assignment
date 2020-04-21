@@ -12,6 +12,10 @@ public class Deck extends GroupOfCards{
     private Deck(int givenSize) {
         super(givenSize);
         addCards();
+        shuffleDeck();
+    }
+    
+    public void shuffleDeck(){
         Collections.shuffle(deck);
     }
     
@@ -22,12 +26,13 @@ public class Deck extends GroupOfCards{
     private void addCards(){
         for(BJCard.Suit suit : BJCard.Suit.values()){
             for(BJCard.Value value: BJCard.Value.values()){
-                deck.add(new BJCard(suit, value));         
+                deck.add(new BJCard(suit, value));
             }
         }
     }
     
     public ArrayList<BJCard> getDeck(){
+        shuffleDeck();
         return deck;
     }
     

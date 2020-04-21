@@ -41,17 +41,19 @@ public class BJGame extends Game {
         int round =1;
         boolean stop=false;
         while(!stop){
+            
             System.out.println("-----Round "+round+"-----");
             for(int turn = 0; turn<size; turn++){
                 String name = _player[turn].getPlayerID();
-                System.out.println(name+"'s turn");
+                System.out.println("%%%%%"+name+"'s turn%%%%%");
                 _player[turn].play();
             }
-       
+            System.out.println("Round Ended");
             declareWinner();
             
             for(int index=0;index<size;index++){
                 if(_score[index]==_endScore){
+                    System.out.println("Game Ended");
                     System.out.println(_player[index].getPlayerID()+" Wins the game");
                     stop=true;
                 }
@@ -79,13 +81,18 @@ public class BJGame extends Game {
         if ((int) winner.get(0) == _player.length - 1) {
             System.out.println("Dealer Wins");
             _score[_player.length - 1]++;
-        } else
-            for(int c=0; c<winner.size()-1;c++) {
+        } 
+        else if(winner.size()==0){
+            System.out.println("Draw Game");
+        }
+        else{
+            for(int c=0; c<winner.size();c++) {
                 System.out.println(_player[c].getPlayerID()+ " wins");
                 _score[(int) winner.get(c)]++;
             }
+        }
     }
-    
-    
-    
 }
+   
+    
+    
