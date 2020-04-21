@@ -10,9 +10,9 @@ public class BJCard extends Card {
 	 * @param String
 	 */
 	public BJCard(String suit,int value ) {
-		// TODO - implement BJCard.BJCard
-		throw new UnsupportedOperationException();
-	}
+            this.suit = suit;	
+            this.value = value;
+        }
 
 	public String getSuit() {
 		return this.suit;
@@ -24,7 +24,6 @@ public class BJCard extends Card {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.value + " of " + this.suit;
     }
-
 }
