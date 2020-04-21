@@ -1,30 +1,30 @@
-package ca.sheridancollege.project.BlackJackClass;
-
-public class BJPlayer extends Player {
-    
-    int sum;
-    BJPlayer(String name){
-        super.setPlayerID(name);
-        Hand ch = new Hand();
-        
-        //create 52 Cards
-        ch.generateHand();
-        
-        
-        for(BJCard c: ch.cards)
-        {
-            System.out.println(c.getValue() + " of " + c.getValue());
-        }
-    }
-    @Override public void play (){
-        
+/**
+ *
+ * @author jbias
+ */
+public class BJPlayer extends Player{
+    private int sum;
+    private int numOfAces;
+    public BJPlayer(String name){
+        super(name);
+	Hand ch = new Hand(2);
     }
     public int getSum(){
         return sum;
     }
     public void getCard(){
-        int value=0;
+        int value=Hand.getCard();
+        if(value==11)
+            numOfAces++;
         sum+=value;
     }
-    
+    public boolean bust(){
+        if(numOfAces>=1){
+            sum-=10;
+            numOfAces--;
+            return false;
+        }
+        else
+            return true;
+    }
 }

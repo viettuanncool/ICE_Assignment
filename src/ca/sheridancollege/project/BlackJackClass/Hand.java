@@ -1,23 +1,16 @@
-package ca.sheridancollege.project.BlackJackClass;
 
 import java.util.ArrayList;
-
-public class Hand {
-    
-    private ArrayList<BJCard> _card = new ArrayList<BJCard>();
-    
-    public Hand() {
-        // TODO - implement Hand.Handk
+/**
+ *
+ * @author jbias
+ */
+public class Hand extends GroupOfCards{
+    ArrayList<BJCard> hand;
+    public Hand (int s){
+        super(s);
     }
-    
-    public int addCard(BJCard card){
-        _card.add(card);
-        return card.getValue();
+    public int getCard(){
+        hand.add(Deck.getCard());
+        return hand.get(super.getSize()-1).getValue();
     }
-
-    void addCard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
 }
